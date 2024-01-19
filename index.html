@@ -62,6 +62,21 @@
             background-color: white; /* Add white background to comments */
             padding: 5px; /* Add padding for better visibility */
         }
+
+        #getStartedSection {
+            text-align: center;
+            margin: 20px;
+        }
+
+        #getStartedButton {
+            background-color: red;
+            color: white;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -96,6 +111,12 @@
             and we are still open to bringing on board more app installers and activators. All you are required to have is a smartphone with good internet access.
         </span>
     </p>
+
+    <!-- Get Started Section -->
+    <div id="getStartedSection">
+        <h2>Get trained for 10-15 minutes and START WORKING NOW!</h2>
+        <button id="getStartedButton" onclick="redirectToWhatsApp()">CLICK HERE TO GET STARTED!</button>
+    </div>
 
     <script>
         // Dummy data for demonstration
@@ -171,6 +192,11 @@
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
+
+        // Function to redirect to WhatsApp link
+        function redirectToWhatsApp() {
+            window.location.href = 'https://api.whatsapp.com/message/PJQYFAE7QKFYF1';
+        }
     </script>
 
     <!-- Alphabet Learning Section Script -->
@@ -178,11 +204,11 @@
         const alphabetData = [
             { comment: "This is a great business opportunity. It has indeed transformed my life!", imageUrl: 'https://i.imgur.com/K1YlIvt.jpg' },
             { comment: "I am signing up more than 20 learners daily. What an opportunity!", imageUrl: 'https://i.imgur.com/pB69x2K.jpg' },
-            { comment: "Very easy to install the Apps to my clients' smartphones...", imageUrl: 'https://i.imgur.com/xfictU9.jpg' },
+            { comment: "Very easy to install the Apps on my clients' smartphones...", imageUrl: 'https://i.imgur.com/xfictU9.jpg' },
             { comment: "Mpesa payments make this job very efficient. My customers are very happy!", imageUrl: 'https://i.imgur.com/TuhKJMw.jpg' },
-            { comment: "Having the App installed in my smartphone makes it easy to use. Great business opportunity!", imageUrl: 'https://i.imgur.com/ESSpzIc.jpg' },
+            { comment: "Having the App installed on my smartphone makes it easy to use. Great business opportunity!", imageUrl: 'https://i.imgur.com/ESSpzIc.jpg' },
             { comment: "Incredible work! The details are outstanding. My customers love the App!", imageUrl: 'https://i.imgur.com/V9vWnyK.jpg' },
-            { comment: "If you are looking for smart business opportunity, here you are!", imageUrl: 'https://i.imgur.com/X6lFaaN.jpg' },
+            { comment: "If you are looking for a smart business opportunity, here you are!", imageUrl: 'https://i.imgur.com/X6lFaaN.jpg' },
             { comment: "The content in the CBC App is all-round - what every learner needs!", imageUrl: 'https://i.imgur.com/lDr5Opc.jpg' },
             { comment: "CBC Digital App is innovation and creativity at its best!", imageUrl: 'https://i.imgur.com/PRu1CpY.jpg' },
             { comment: "Ever thought of making BIG money? CBC Digital App is all you need!", imageUrl: 'https://i.imgur.com/qfcZOMG.jpg' },
