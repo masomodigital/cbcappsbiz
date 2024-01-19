@@ -8,6 +8,26 @@
         body { margin: 0; overflow: hidden; }
         h2 { color: red; text-align: center; margin: 20px 0; }
         p { text-align: justify; margin: 20px; }
+        
+        table {
+            width: auto;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            color: darkgreen;
+        }
+
+        .earnings {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -37,13 +57,90 @@
         </span>
     </p>
 
-    <p>
-        <span lang="en-US" style="font-family: Lato; font-size: 12pt; font-weight: bold;">
-            Would you like to join us and make Sh.1,000+ on a daily basis? If your answer is YES,
-            click the GET STARTED NOW button below. NB: Ensure you are using your smartphone.
-        </span>
-    </p>
+    <!-- Insert the earnings table here -->
+    <table id="earnings-table">
+        <tr>
+            <th>Name of Activator</th>
+            <th>No. of App Installations</th>
+            <th>Earnings Per Month</th>
+        </tr>
+    </table>
 
-    <!-- Add the rest of your HTML content here -->
+    <script>
+        // Dummy data for demonstration
+        const activators = generateActivators(50);
+        let currentIndex = 0;
+
+        // Function to generate activators with random data
+        function generateActivators(count) {
+            const activatorList = [];
+            for (let i = 1; i <= count; i++) {
+                const name = generateRandomName();
+                const installations = getRandomNumber(300, 750);
+                activatorList.push({ name, installations });
+            }
+            return activatorList;
+        }
+
+        // Function to generate a random number within a range
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Function to generate random African-sounding names
+        function generateRandomName() {
+            const firstNames = ["Mercy", "Nancy", "Kennedy", "Lucas", "Dorris", "Aisha", "Adams", "Francis", "Kate", "Nyamweya", "Aisha", "Thabo", "Zanele"];
+            const lastNames = ["Wanjala", "Mutua", "Wafula", "Mwangi", "Karanja", "Were", "Kanake", "Koech", "Wambui", "Chakwera", "Manaseh", "Anyango"];
+
+            const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+            const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+
+            return `${randomFirstName} ${randomLastName}`;
+        }
+
+        // Function to update the table with activators
+        function updateTable() {
+            const table = document.getElementById("earnings-table");
+
+            // Clear existing rows
+            while (table.rows.length > 1) {
+                table.deleteRow(1);
+            }
+
+            // Add a new activator to the table
+            const activator = activators[currentIndex];
+            const newRow = table.insertRow(1);
+            const nameCell = newRow.insertCell(0);
+            const installationsCell = newRow.insertCell(1);
+            const earningsCell = newRow.insertCell(2);
+
+            nameCell.textContent = activator.name;
+            installationsCell.textContent = activator.installations;
+            earningsCell.innerHTML = `<span class="earnings">Ksh. ${numberWithCommas(activator.installations * 100)}.00</span>`;
+
+            // Move to the next activator
+            currentIndex = (currentIndex + 1) % activators.length;
+        }
+
+        // Function to simulate continuous update every 1 second
+        function continuousUpdate() {
+            setInterval(() => {
+                // Update the table with the next activator
+                updateTable();
+            }, 1000);
+        }
+
+        // Initial update of the table
+        updateTable();
+
+        // Start continuous update
+        continuousUpdate();
+
+        // Function to add commas to numbers for better readability
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+    </script>
+
 </body>
 </html>
