@@ -3,67 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rotating Cube with Textures</title>
+    <title>CBC DIGITAL APPS BUSINESS</title>
     <style>
         body { margin: 0; overflow: hidden; }
-        canvas { display: block; margin: 10px auto; } /* Adjusted margin for the canvas */
-        p { margin: 0; } /* Remove default margin for paragraphs */
+        h2 { color: red; text-align: center; margin: 20px 0; }
+        p { text-align: justify; margin: 20px; }
     </style>
 </head>
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
-    <script>
-        // Set up scene, camera, and renderer
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10);
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setClearColor(0x000000, 0);
-        document.body.appendChild(renderer.domElement);
+    <h2>CBC DIGITAL APPS BUSINESS</h2>
 
-        // Define new textures for each face of the cube
-        const textures = [
-            'https://i.imgur.com/mwpTHJj.png',
-            'https://i.imgur.com/y0CwL9v.png',
-            'https://i.imgur.com/LamFmAN.png',
-            'https://i.imgur.com/asbHXSu.png',
-            'https://i.imgur.com/XIGngp7.png',
-            'https://i.imgur.com/SeAqYop.png'
-        ];
-
-        // Create textures from new images
-        const textureLoader = new THREE.TextureLoader();
-        const materials = textures.map(textureUrl => new THREE.MeshBasicMaterial({ map: textureLoader.load(textureUrl) }));
-
-        // Create a cube with textured faces and add it to the scene
-        const geometry = new THREE.BoxGeometry(1, 1, 1); // Reduced size by 50%
-        const cube = new THREE.Mesh(geometry, materials);
-        scene.add(cube);
-
-        // Set the camera position
-        camera.position.z = 3;
-
-        // Animation function to rotate the cube
-        function animate() {
-            requestAnimationFrame(animate);
-
-            // Rotate the cube
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
-
-            renderer.render(scene, camera);
-        }
-
-        animate();
-    </script>
-
-    <p style="text-align: justify; margin: 20px;">
-        <span lang="en-US" style="font-family: Lato; font-size: 12pt; font-weight: bold;">Welcome to </span>
-        <span lang="en-US" style="color: red; font-family: Lato; font-size: 12pt; font-weight: bold;">CBC DIGITAL APPS BUSINESS.</span>
-        <span lang="en-US" style="font-family: Lato; font-size: 12pt; font-weight: bold;"> You will earn Ksh.100 per each CBC DIGITAL APPLICATION installation and activation.
+    <p>
+        <span lang="en-US" style="font-family: Lato; font-size: 12pt; font-weight: bold;">
+            Welcome to CBC DIGITAL APPS BUSINESS. You will earn Ksh.100 per each CBC DIGITAL APPLICATION installation and activation.
             CBC DIGITAL is Kenya’s #1 online learning platform with lessons across all learning areas for grades 3 to 6.
             The platform has been appraised by KICD and the Standard Media Group for its exceptional lesson layouts,
             listing it as a tool that every CBC learner must have.
+        </span>
+    </p>
+
+    <p style="text-align: justify;">
+        <span lang="en-US" style="font-family: Lato; font-size: 12pt; font-weight: bold;">
+            The platform is registered as a business in Kenya with certificate registration number BN-5XCXXGAQ.
+            CBC DIGITAL has been recognized by the Ministry Of Technology for providing online jobs and smart business
+            opportunity to Kenyans who are making unlimited daily and monthly income by installing the app to clients.
+        </span>
+    </p>
+
+    <p style="text-align: justify;">
+        <span lang="en-US" style="font-family: Lato; font-size: 12pt; font-weight: bold;">
+            Scores of Kenyans are making great income by installing and activating CBC DIGITAL APP to clients countywide,
+            and we are still open to bring on board more app installers and activators. All you are required to have is a smartphone with good internet access.
+        </span>
+    </p>
+
+    <p>
+        <span lang="en-US" style="font-family: Lato; font-size: 12pt; font-weight: bold;">
+            Would you like to join us and make Sh.1,000+ on a daily basis? If your answer is YES,
+            click the GET STARTED NOW button below. NB: Ensure you are using your smartphone.
         </span>
     </p>
 
