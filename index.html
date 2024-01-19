@@ -96,10 +96,83 @@
     </div>
 
     <script>
-        // Earnings table functions
-        // ...
+        // Dummy data for demonstration
+        const activators = generateActivators(50);
+        let currentIndex = 0;
 
-        // Alphabet learning functions
+        // Function to generate activators with random data
+        function generateActivators(count) {
+            const activatorList = [];
+            for (let i = 1; i <= count; i++) {
+                const name = generateRandomName();
+                const installations = getRandomNumber(300, 750);
+                activatorList.push({ name, installations });
+            }
+            return activatorList;
+        }
+
+        // Function to generate a random number within a range
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Function to generate random African-sounding names
+        function generateRandomName() {
+            const firstNames = ["Mercy", "Nancy", "Kennedy", "Lucas", "Dorris", "Aisha", "Adams", "Francis", "Kate", "Nyamweya", "Aisha", "Thabo", "Zanele"];
+            const lastNames = ["Wanjala", "Mutua", "Wafula", "Mwangi", "Karanja", "Were", "Kanake", "Koech", "Wambui", "Chakwera", "Manaseh", "Anyango"];
+
+            const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+            const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+
+            return `${randomFirstName} ${randomLastName}`;
+        }
+
+        // Function to update the table with activators
+        function updateTable() {
+            const table = document.getElementById("earnings-table");
+
+            // Clear existing rows
+            while (table.rows.length > 1) {
+                table.deleteRow(1);
+            }
+
+            // Add a new activator to the table
+            const activator = activators[currentIndex];
+            const newRow = table.insertRow(1);
+            const nameCell = newRow.insertCell(0);
+            const installationsCell = newRow.insertCell(1);
+            const earningsCell = newRow.insertCell(2);
+
+            nameCell.textContent = activator.name;
+            installationsCell.textContent = activator.installations;
+            earningsCell.innerHTML = `<span class="earnings">Ksh. ${numberWithCommas(activator.installations * 100)}.00</span>`;
+
+            // Move to the next activator
+            currentIndex = (currentIndex + 1) % activators.length;
+        }
+
+        // Function to simulate continuous update every 1 second
+        function continuousUpdate() {
+            setInterval(() => {
+                // Update the table with the next activator
+                updateTable();
+            }, 1000);
+        }
+
+        // Initial update of the table
+        updateTable();
+
+        // Start continuous update
+        continuousUpdate();
+
+        // Function to add commas to numbers for better readability
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+    </script>
+
+    <!-- Alphabet Learning Section Script -->
+    <script>
         const alphabetData = [
             { comment: "This is a great business opportunity. It has indeed transformed my life!", imageUrl: 'https://i.imgur.com/K1YlIvt.jpg' },
             { comment: "I am signing up more than 20 learners daily. What an opportunity!", imageUrl: 'https://i.imgur.com/pB69x2K.jpg' },
@@ -111,17 +184,17 @@
             { comment: "The content in the CBC App is all round - what every learner needs!", imageUrl: 'https://i.imgur.com/lDr5Opc.jpg' },
             { comment: "CBC Digital App is innovation and creativity at its best!", imageUrl: 'https://i.imgur.com/PRu1CpY.jpg' },
             { comment: "Ever thought of making BIG money? CBC Digital App is all you need!", imageUrl: 'https://i.imgur.com/qfcZOMG.jpg' },
-            { comment: "I have got full time job and business opportunity working on this platform!", imageUrl: 'https://i.imgur.com/1qJAFAx.jpg' },
+            { comment: "I have got full-time job and business opportunity working on this platform!", imageUrl: 'https://i.imgur.com/1qJAFAx.jpg' },
         ];
 
-        let currentIndex = 0;
+        let currentIndexAlphabet = 0;
 
         function showNextLetter() {
-            const letterData = alphabetData[currentIndex];
+            const letterData = alphabetData[currentIndexAlphabet];
             document.getElementById('imageDisplay').src = letterData.imageUrl;
             document.getElementById('commentDisplay').innerText = letterData.comment;
 
-            currentIndex = (currentIndex + 1) % alphabetData.length;
+            currentIndexAlphabet = (currentIndexAlphabet + 1) % alphabetData.length;
 
             setTimeout(showNextLetter, 2000); // Change the time interval as needed (e.g., 2000 milliseconds for 2 seconds)
         }
