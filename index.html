@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Cube with Textures</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script>
+        // Set up scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 0);
+        document.body.appendChild(renderer.domElement);
+
+        // Define new textures for each face of the cube
+        const textures = [
+            'https://i.imgur.com/mwpTHJj.png',
+            'https://i.imgur.com/y0CwL9v.png',
+            'https://i.imgur.com/LamFmAN.png',
+            'https://i.imgur.com/asbHXSu.png',
+            'https://i.imgur.com/XIGngp7.png',
+            'https://i.imgur.com/SeAqYop.png'
+        ];
+
+        // Create textures from new images
+        const textureLoader = new THREE.TextureLoader();
+        const materials = textures.map(textureUrl => new THREE.MeshBasicMaterial({ map: textureLoader.load(textureUrl) }));
+
+        // Create a cube with textured faces and add it to the scene
+        const geometry = new THREE.BoxGeometry(2, 2, 2);
+        const cube = new THREE.Mesh(geometry, materials);
+        scene.add(cube);
+
+        // Set the camera position
+        camera.position.z = 3;
+
+        // Animation function to rotate the cube
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Rotate the cube
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    </script>
+
+    <p style="text-align: justify; margin: 20px;">
+        <span lang="en-US" style="font-family: Lato; font-size: 12pt; font-weight: bold;">Welcome to </span>
+        <span lang="en-US" style="color: red; font-family: Lato; font-size: 12pt; font-weight: bold;">CBC DIGITAL APPS BUSINESS.</span>
+        <span lang="en-US" style="font-family: Lato; font-size: 12pt; font-weight: bold;"> You will earn Ksh.100 per each CBC DIGITAL APPLICATION installation and activation.
+            CBC DIGITAL is Kenya’s #1 online learning platform with lessons across all learning areas for grades 3 to 6.
+            The platform has been appraised by KICD and the Standard Media Group for its exceptional lesson layouts,
+            listing it as a tool that every CBC learner must have.
+        </span>
+    </p>
+
+    <!-- Add the rest of your HTML content here -->
+</body>
+</html>
